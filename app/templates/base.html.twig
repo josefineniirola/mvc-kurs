@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/mvc.png') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&family=Staatliches&display=swap" rel="stylesheet">
+            {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    {# <nav>
+    <ul>
+        <li><a href="{{ path('home') }}">Home</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+        <li><a href="{{ path('lucky') }}">Lucky number</a></li>
+        <li><a href="{{ path('report') }}">Report</a></li>
+        <li><a href="{{ path('quote') }}">Quote</a></li>
+    </ul>
+</nav> #}
+
+
+<nav class="navbar">
+  <a href="#" class="navbar-brand">Josefine</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="{{ path('home') }}" class="nav-link">|Home|</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ path('about') }}" class="nav-link">|About|</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ path('lucky') }}" class="nav-link">|Magic Number|</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ path('report') }}" class="nav-link">|Report|</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ path('quote') }}" class="nav-link">|Quote|</a>
+    </li>
+  </ul>
+</nav>
+        {% block body %}{% endblock %}
+    </body>
+    {% include "footer.html.twig" %}
+</html>

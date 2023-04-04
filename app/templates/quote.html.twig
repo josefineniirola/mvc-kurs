@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %}
+    <h1>Magic number</h1>
+    <p>Welcome to my awesome magical homepage.</p>
+    <p>Dagens skämt hämtat från <a href="https://api-ninjas.com/">Api Ninjas</a>: kl {{time}}, idag: {{date}}</p>
+    <p class="joke">{{ joke }}</p>
+{% endblock %}

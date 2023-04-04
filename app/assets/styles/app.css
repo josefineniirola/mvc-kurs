@@ -1,0 +1,164 @@
+body {
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif;
+    width: 80%;
+}
+
+h1 {
+    border-bottom: 4px #000;
+    color: #04B8B9;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+
+.kmom {
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 30px;
+    font-size: 1.5em;
+}
+
+.kmom:nth-child(odd) {
+    background: #FACFA1;
+    color: #000;
+}
+
+.kmom:nth-child(even) {
+    background: #04B8B9;
+    color: #000;
+}
+
+
+.kmom_list {
+    display: flex;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+}
+
+.kmom_list a {
+    color: #04B8B9;
+}
+
+
+.kmom_list a:hover {
+    color: #ccc;
+}
+
+/* FÄRGSCHEMA: 
+LILA, #A25DA1
+BLÅ, #04B8B9
+ORANGE, #FACFA1 
+*/
+
+.joke {
+    color: grey;
+    font-size: 3em;
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #04B8B9;
+    color: #fff;
+    padding: 10px;
+    font-family: 'Roboto Slab', serif;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 1em;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #A25DA1;
+}
+
+
+.picture_me  {
+    width: 30%;
+    border-radius: 15px;
+}
+
+
+.me_main h1 {
+    text-align: left;
+}
+
+.me_main {
+    padding: 0.5em;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: center;
+    width: 80%;
+    background-color: #FACFA1;
+    margin: auto;
+}
+
+.magic_main {
+    background-color: purple;
+    padding: 0.5em;
+}
+
+.magic_number {
+    font-size: 7em;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: orange;
+    background-color: green;
+}
+
+.magic_number_p {
+    font-size: 5em;
+    color: white;
+    text-align: center;
+}
+
+.tobbe_trollkarl {
+    width: 100%;
+}
+
+
+footer {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    min-height: 200px;
+    padding: 1em;
+    margin-top: 15em;
+    background-color: #A25DA1;
+}
