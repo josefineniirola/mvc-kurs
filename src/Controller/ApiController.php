@@ -18,7 +18,7 @@ class ApiController extends AbstractController
         return $this->render('Api/api.html.twig');
     }
 
-
+    // Show deck
     #[Route('/api/deck', name: "api_deck", methods: ["GET"])]
     public function api_deck(SessionInterface $session, CardGameController $cardGameController): Response
     {
