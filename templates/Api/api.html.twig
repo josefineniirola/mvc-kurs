@@ -17,17 +17,18 @@
         </li>
     </div>
 
+    <div class="api-quote">
+        <form method="post" action="">
+        <p>
+            <input type="submit" name="shuffle" value="shuffle"
+                onClick="this.form.action='{{ path('api_deck_shuffle') }}';">
 
-    <form method="post" action="">
-    <p>
-        <input type="submit" name="shuffle" value="shuffle"
-            onClick="this.form.action='{{ path('api_deck_shuffle') }}';">
+            <input type="submit" name="draw" value="draw"
+                onClick="this.form.action='{{ path('api_deck_draw') }}';">
 
-        <input type="submit" name="draw" value="draw"
-            onClick="this.form.action='{{ path('api_deck_draw') }}';">
-
-        <input type="submit" name="deck_draw_num" value="draw deck"
-            onClick="this.form.action='{{ path('api_deck_draw_num', {num: 4}) }}';">
-    </p>
+            <input type="submit" name="deck_draw_num" value="draw deck"
+                onClick="this.form.action='{{ path('api_deck_draw_num', {num: 4}) }}';">
+        </p>
+    </div>
 </form>
 {% endblock %}
