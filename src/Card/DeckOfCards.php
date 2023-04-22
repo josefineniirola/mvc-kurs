@@ -19,6 +19,7 @@ class DeckOfCards
         $this->cards[] = $card;
     }
 
+    // Sets up deck
     public function generateDeck(): void
     {
         $suits = [
