@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block title %}DRAW{% endblock %}
+
+{% block body %}
+{% include 'Card/navbar.html.twig' %}
+{{numOfCards}}
+<li class="cards"> {{draw["graphic"] | raw}} </li>
+{% endblock %}

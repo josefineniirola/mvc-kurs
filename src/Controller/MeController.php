@@ -10,13 +10,14 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Exception\ServerException;
 
-class MeController extends AbstractController 
+class MeController extends AbstractController
 {
     #[Route('/', name: "home")]
     public function me(): Response
     {
         return $this->render('me.html.twig');
     }
+
     #[Route("/about", name: "about")]
     public function about(): Response
     {

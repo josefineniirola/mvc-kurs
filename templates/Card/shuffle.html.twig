@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}SHUFFLE{% endblock %}
+
+{% block body %}
+{% include 'Card/navbar.html.twig' %}
+
+    {% for card in cards %}
+        <li class="cards"> {{ card["graphic"] | raw}} </li>
+    {% endfor %}
+
+{% endblock %}

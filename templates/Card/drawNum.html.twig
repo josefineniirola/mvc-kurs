@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}DRAWNUM{% endblock %}
+
+{% block body %}
+{% include 'Card/navbar.html.twig' %}
+
+{{numOfCards}}
+{% for card in deck %}
+    <li class="cards"> {{ card["graphic"] | raw }} </li>
+{% endfor %}
+{% endblock %}

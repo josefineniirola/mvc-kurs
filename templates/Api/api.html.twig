@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block body %}
+    <h1>Api</h1>
+    <div class="api-quote">
+        <li class="nav-item">
+        <a href="{{ path('quote') }}">Skämt quote</a>
+        </li>
+        Den här routen visar ett api på quotes som är importerade från ApiNinjas.
+        <br>Den visar <b>tid</b>, <b>skämt</b> & <b>datum</b>
+    </div>
+    <div class="api-quote">
+        <li class="nav-item">
+            <a href="{{ path('api_deck') }}">api_deck</a>
+        </li>
+    </div>
+
+
+    <form method="post" action="">
+    <p>
+        <input type="submit" name="shuffle" value="shuffle"
+            onClick="this.form.action='{{ path('api_deck_shuffle') }}';">
+
+        <input type="submit" name="draw" value="draw"
+            onClick="this.form.action='{{ path('api_deck_draw') }}';">
+
+        <input type="submit" name="deck_draw_num" value="draw deck"
+            onClick="this.form.action='{{ path('api_deck_draw_num', {num: 4}) }}';">
+    </p>
+</form>
+{% endblock %}
