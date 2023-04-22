@@ -179,3 +179,11 @@ footer {
     text-align: center;
     list-style: none;
 }
+
+input[type="submit"] {
+    font-size: 2em;
+    background-color: #A25DA1;
+    color: #000;
+    padding: 0.5em;
+    margin: 0.5em;
+}
