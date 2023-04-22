@@ -162,3 +162,20 @@ footer {
     margin-top: 15em;
     background-color: #A25DA1;
 }
+
+.cards {
+    font-size: 5em;
+    display: inline-flex;
+}
+
+
+.api-quote {
+    display: block;
+    overflow: auto;
+    background-color: #FACFA1;
+    border: 1px solid #000;
+    border-radius: 13px;
+    width: 250px;
+    text-align: center;
+    list-style: none;
+}
