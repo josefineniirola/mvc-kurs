@@ -19,10 +19,10 @@ class ApiController extends AbstractController
     }
 
     // Show deck
-    #[Route('/api/deck', name: "api_deck", methods: ["GET"])]
-    public function api_deck(SessionInterface $session, CardGameController $cardGameController): Response
+    #[Route('/api/deck', name: "apiDeck", methods: ["GET"])]
+    public function apiDeck(SessionInterface $session, CardGameController $cardGameController): Response
     {
-        $drawnCards = $cardGameController->deck_api($session);
+        $drawnCards = $cardGameController->deckApi($session);
         $data = [
             "cards" => $drawnCards,
         ];
@@ -34,8 +34,8 @@ class ApiController extends AbstractController
     }
 
 
-    #[Route('/api/deck/shuffle', name: 'api_deck_shuffle', methods: ['POST'])]
-    public function api_deck_shuffle(SessionInterface $session): JsonResponse
+    #[Route('/api/deck/shuffle', name: 'apiDeckShuffle', methods: ['POST'])]
+    public function apiDeckShuffle(SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards();
         $session->remove("cardWithoutDrawn");
@@ -50,11 +50,11 @@ class ApiController extends AbstractController
         return new JsonResponse($data);
     }
 
-    #[Route('/api/deck/draw', name: 'api_deck_draw', methods: ['POST'])]
-    public function api_deck_draw(SessionInterface $session): JsonResponse
+    #[Route('/api/deck/draw', name: 'apiDeckDraw', methods: ['POST'])]
+    public function apiDeckDraw(SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards();
-        if(!$session->has("cardWithoutDrawn")) {
+        if (!$session->has("cardWithoutDrawn")) {
             $deck->generateDeck();
             $deck->shuffle();
         } else {
@@ -62,7 +62,7 @@ class ApiController extends AbstractController
             $deck->wannabeDeck($savedDeck);
         }
 
-        if($deck->getNumberCards() >= 1) {
+        if ($deck->getNumberCards() >= 1) {
             $drawnCard = $deck->drawACard()[0]->getCard();
             $cardWithoutDrawn = $deck->getArray();
             $session->set("cardWithoutDrawn", $cardWithoutDrawn);
@@ -73,18 +73,18 @@ class ApiController extends AbstractController
             ];
         } else {
             $data = [
-                "draw" => ["graphic"=>"slut på kort"],
+                "draw" => ["graphic" => "slut på kort"],
                 "numOfCards" => 0,
             ];
         }
         return new JsonResponse($data);
     }
 
-    #[Route('/api/deck/draw/{num<\d+>}', name: 'api_deck_draw_num', methods: ['POST'])]
-    public function api_deck_draw_num(int $num, SessionInterface $session): JsonResponse
+    #[Route('/api/deck/draw/{num<\d+>}', name: 'apiDeckDrawNum', methods: ['POST'])]
+    public function apiDeckDrawNum(int $num, SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards();
-        if(!$session->has("cardWithoutDrawn")) {
+        if (!$session->has("cardWithoutDrawn")) {
             $deck->generateDeck();
             $deck->shuffle();
         } else {
@@ -92,9 +92,9 @@ class ApiController extends AbstractController
             $deck->wannabeDeck($savedDeck);
         }
 
-        if($deck->getNumberCards() >= 1) {
+        if ($deck->getNumberCards() >= 1) {
             $cardsDrawn = [];
-            for($i = 0; $i < $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $cardsDrawn[] = $deck->drawACard()[0]->getCard();
             }
             $cardWithoutDrawn = $deck->getArray();

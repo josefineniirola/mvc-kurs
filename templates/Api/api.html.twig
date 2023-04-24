@@ -13,7 +13,7 @@
     </div>
     <div class="api-quote">
         <li class="nav-item">
-            <a href="{{ path('api_deck') }}">api_deck</a>
+            <a href="{{ path('apiDeck') }}">api_deck</a>
         </li>
     </div>
 
@@ -21,13 +21,13 @@
         <form method="post" action="">
         <p>
             <input type="submit" name="shuffle" value="shuffle"
-                onClick="this.form.action='{{ path('api_deck_shuffle') }}';">
+                onClick="this.form.action='{{ path('apiDeckShuffle') }}';">
 
             <input type="submit" name="draw" value="draw"
-                onClick="this.form.action='{{ path('api_deck_draw') }}';">
+                onClick="this.form.action='{{ path('apiDeckDraw') }}';">
 
-            <input type="submit" name="deck_draw_num" value="draw deck"
-                onClick="this.form.action='{{ path('api_deck_draw_num', {num: 4}) }}';">
+            <input type="submit" name="apiDeckDrawNum" value="draw deck"
+                onClick="this.form.action='{{ path('apiDeckDrawNum', {num: 4}) }}';">
         </p>
     </div>
 </form>

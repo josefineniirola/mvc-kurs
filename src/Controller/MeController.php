@@ -7,13 +7,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpClient\Exception\ServerException;
 
 class MeController extends AbstractController
 {
     #[Route('/', name: "home")]
-    public function me(): Response
+    public function home(): Response
     {
         return $this->render('me.html.twig');
     }
@@ -43,7 +41,7 @@ class MeController extends AbstractController
     }
 
     #[Route("/api/quote", name: "quote")]
-    public function api(): Response
+    public function apiQuote(): Response
     {
         $date = date("Y/m/d");
         $time = date("h:i:sa");
@@ -58,7 +56,7 @@ class MeController extends AbstractController
 
         $dataResponse = $data->getContent();
         $data = json_decode($dataResponse, true);
-        $dataJoke = ["joke from APININJAS.com"=> $data[0]["joke"], "time"=> $time, "date"=> $date];
+        $dataJoke = ["joke from APININJAS.com" => $data[0]["joke"], "time" => $time, "date" => $date];
 
         $response = new JsonResponse($dataJoke);
         $response->setEncodingOptions(

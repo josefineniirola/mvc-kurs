@@ -6,8 +6,6 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -43,8 +41,8 @@ class CardGameController extends AbstractController
 
 
 
-    #[Route("/deck/api", name: "deck_api")]
-    public function deck_api(): string
+    #[Route("/deck/api", name: "deckApi")]
+    public function deckApi(): string
     {
         $deck = new DeckOfCards();
         $deck->generateDeck();
@@ -78,7 +76,7 @@ class CardGameController extends AbstractController
     public function draw(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-        if(!$session->has("cardWithoutDrawn")) {
+        if (!$session->has("cardWithoutDrawn")) {
             $deck->generateDeck();
             $deck->shuffle();
         } else {
@@ -86,7 +84,7 @@ class CardGameController extends AbstractController
             $deck->wannabeDeck($savedDeck);
         }
 
-        if($deck->getNumberCards() >= 1) {
+        if ($deck->getNumberCards() >= 1) {
             $drawnCard = $deck->drawACard()[0]->getCard();
             $cardWithoutDrawn = $deck->getArray();
             $session->set("cardWithoutDrawn", $cardWithoutDrawn);
@@ -97,7 +95,7 @@ class CardGameController extends AbstractController
             ];
         } else {
             $data = [
-                "draw" => ["graphic"=>"slut på kort"],
+                "draw" => ["graphic" => "slut på kort"],
                 "numOfCards" => 0,
             ];
         }
@@ -112,7 +110,7 @@ class CardGameController extends AbstractController
     public function drawNum(int $num, SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-        if(!$session->has("cardWithoutDrawn")) {
+        if (!$session->has("cardWithoutDrawn")) {
             $deck->generateDeck();
             $deck->shuffle();
         } else {
@@ -120,9 +118,9 @@ class CardGameController extends AbstractController
             $deck->wannabeDeck($savedDeck);
         }
 
-        if($deck->getNumberCards() >= 1) {
+        if ($deck->getNumberCards() >= 1) {
             $cardsDrawn = [];
-            for($i = 0; $i < $num; $i++) {
+            for ($i = 0; $i < $num; $i++) {
                 $cardsDrawn[] = $deck->drawACard()[0]->getCard();
             }
             $cardWithoutDrawn = $deck->getArray();
