@@ -66,7 +66,8 @@ class CardGraphic extends Card
     public function __construct($num, $color)
     {
         parent::__construct($num, $color);
-        for ($i = 0; $i < count($this->representation); $i++) {
+        $count = count($this->representation);
+        for ($i = 0; $i < $count; $i++) {
             if ($this->representation[$i]["order"] == $this->num && $this->representation[$i]["color"] == $this->color) {
                 $this->graphic = $this->representation[$i]["value"];
             }
