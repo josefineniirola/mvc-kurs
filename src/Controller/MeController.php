@@ -7,9 +7,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MeController extends AbstractController
 {
+    private $httpClient;
+    public function __construct(HttpClientInterface $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
+
     #[Route('/', name: "home")]
     public function home(): Response
     {
@@ -46,8 +53,7 @@ class MeController extends AbstractController
         $date = date("Y/m/d");
         $time = date("h:i:sa");
         $apiKey = '6gr6ONv5Ksy0NThDmqHi8w==yClulFS2py4LFWY9';
-        $httpClient = HttpClient::create();
-        $data = $httpClient->request('GET', 'https://api.api-ninjas.com/v1/dadjokes?limit=1', [
+        $data = $this->httpClient->request('GET', 'https://api.api-ninjas.com/v1/dadjokes?limit=1', [
             'headers' => [
                 'X-API-Key' => $apiKey
             ]
