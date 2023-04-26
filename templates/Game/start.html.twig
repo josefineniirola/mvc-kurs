@@ -10,15 +10,15 @@
 {% endif %}
 
 
-{% if getPlayerCards is defined %}
-   {% for card in getPlayerCards %}
+{% if playerHand is defined %}
+    {% for card in playerHand %}
         <li class="cards"> {{ card["graphic"] | raw }} </li>
     {% endfor %}
 {% endif %}
 
 
-{% if youLost is defined %}
-   {{youLost}}
+{% if bustedOrNot is defined %}
+    {{bustedOrNot}}
 {% endif %}
 
 <form method="post" action="">

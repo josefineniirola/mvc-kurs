@@ -33,12 +33,14 @@ class GameController extends AbstractController
     {
         return $this->render('Game/start.html.twig');
     }
+    // private function suckMyDick() {
+
+    // }
 
     #[Route('/start', name: "start", methods: ['POST'])]
     public function start(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-
         // skapar en kortlek om det inte finns en
         if (!$session->has("cardWithoutDrawn")) {
             $deck->generateDeck();
@@ -48,30 +50,44 @@ class GameController extends AbstractController
             $savedDeck = $session->get("cardWithoutDrawn");
             $deck->wannabeDeck($savedDeck);
         }
-        
+
         // om kortleken har mer än 1 kort
-        if ($deck->getNumberCards() >= 1) {
-            $playerCardHand = $session->get("playerCardHand");
-            $playerCardHand = new CardHand([]);
-            $player = new Player($playerCardHand);
-
-            $drawCard = $deck->drawACard()[0]->getCard();
-            $graphicToCard = new CardGraphic($drawCard["num"], $drawCard["color"]);
-            $getCard = $graphicToCard->getCard();
-
-            $playerCardHand->addCard($getCard);
-            $getPlayerCards = $playerCardHand->getCards();
-
-            $cardWithoutDrawn = $deck->getArray();
-            $session->set("cardWithoutDrawn", $cardWithoutDrawn);
-            $session->set("playerCardHand", $getPlayerCards);
-
-            dump($player);
-            dump($getPlayerCards);
-            $data = [
-                "playerCardHand" => $getPlayerCards,
-            ];
+        $playerHand = $session->get("playerHand");
+        dump($playerHand);
+        // spara det jg får frn session i en variabel
+        // loopa igenom det
+        // skapa ett kort för varje objekt
+        // lägg till i spelarens hand
+        if (!$session->has("playerHand")) {
+            $playerHand = new CardHand();
         }
+
+        if ($session->has("playerHand")) {
+            $playerHand = $session->get("playerHand");
+            if (!($playerHand instanceof CardHand)) {
+                $playerHand = new CardHand();
+            }
+        }
+
+        $player = new Player($playerHand);
+        $drawCard = $deck->drawACard();
+
+        $playerHand->addCard($drawCard);
+
+        $getPlayerCards = $playerHand->getArray();
+
+        // $player->calculateScore();
+
+        // $playerScore = $player->getScore();
+
+        $cardWithoutDrawn = $deck->getArray();
+        $session->set("cardWithoutDrawn", $cardWithoutDrawn);
+        $session->set("playerHand", $getPlayerCards);
+
+
+        $data = [
+            "playerHand" => $getPlayerCards,
+        ];
         return $this->render('Game/start.html.twig', $data);
     }
 
@@ -79,7 +95,7 @@ class GameController extends AbstractController
     public function restart(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-        $session->remove("cardHand");
+        $session->remove("playerCardHand");
         $session->remove("cardWithoutDrawn");
         $deck->generateDeck();
         $deck->shuffle();
@@ -95,5 +111,3 @@ class GameController extends AbstractController
         return $this->redirectToRoute('game');
     }
 }
-
-

@@ -20,9 +20,9 @@ class ApiController extends AbstractController
 
     // Show deck
     #[Route('/api/deck', name: "apiDeck", methods: ["GET"])]
-    public function apiDeck(SessionInterface $session, CardGameController $cardGameController): Response
+    public function apiDeck(CardGameController $cardGameController): Response
     {
-        $drawnCards = $cardGameController->deckApi($session);
+        $drawnCards = $cardGameController->deckApi();
         $data = [
             "cards" => $drawnCards,
         ];
@@ -63,12 +63,12 @@ class ApiController extends AbstractController
         }
 
         if ($deck->getNumberCards() >= 1) {
-            $drawnCard = $deck->drawACard()[0]->getCard();
+            $drawnCard = $deck->drawACard();
             $cardWithoutDrawn = $deck->getArray();
             $session->set("cardWithoutDrawn", $cardWithoutDrawn);
 
             $data = [
-                "draw" => $drawnCard,
+                "draw" => $drawnCard->getCard(),
                 "numOfCards" => $deck->getNumberCards(),
             ];
         } else {
@@ -95,7 +95,7 @@ class ApiController extends AbstractController
         if ($deck->getNumberCards() >= 1) {
             $cardsDrawn = [];
             for ($i = 0; $i < $num; $i++) {
-                $cardsDrawn[] = $deck->drawACard()[0]->getCard();
+                $cardsDrawn[] = $deck->drawACard()->getCard();
             }
             $cardWithoutDrawn = $deck->getArray();
             $session->set("cardWithoutDrawn", $cardWithoutDrawn);

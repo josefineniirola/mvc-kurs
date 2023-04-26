@@ -16,10 +16,10 @@ class Player
         $this->score = 0;
     }
 
-    public function addCardHand(array $card)
-    {
-        $this->hand->addCard($card);
-    }
+    // public function addCardHand(array $card)
+    // {
+    //     $this->hand->addCard();
+    // }
 
     public function getCardHand()
     {

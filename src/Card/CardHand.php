@@ -4,28 +4,37 @@ namespace App\Card;
 
 class CardHand
 {
-    private $cards = [];
+    private $cards;
 
-    public function __construct(array $cards)
+    public function __construct()
     {
-        $this->cards = $cards;
+        $this->cards = [];
     }
 
-    public function addCard(array $card)
+    public function addCard(CardGraphic $card)
     {
         $this->cards[] = $card;
     }
 
-    public function getCards(): array
+    public function getCards()
     {
         return $this->cards;
+    }
+
+    public function getArray(): array
+    {
+        $deck = [];
+        foreach ($this->cards as $card) {
+            $deck[] = $card->getCard();
+        }
+        return $deck;
     }
 
     public function countCards() {
         $countCards = [];
         $cards = $this->cards;
         foreach ($cards as $card) {
-            $countCards[] = $card["num"];
+            $countCards[] = $card->getNum();
         }
         $sumOfCards = array_sum($countCards);
         return $sumOfCards;

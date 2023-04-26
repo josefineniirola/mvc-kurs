@@ -81,10 +81,8 @@ class DeckOfCards
         return count($this->cards);
     }
 
-    public function drawACard(): array
+    public function drawACard()
     {
-        $popped = [];
-        $popped[] = array_pop($this->cards);
-        return $popped;
+        return array_pop($this->cards);
     }
 }
