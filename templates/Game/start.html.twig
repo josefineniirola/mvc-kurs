@@ -10,12 +10,16 @@
 {% endif %}
 
 
-{% if cardHand is defined %}
-   {% for card in cardHand %}
+{% if getPlayerCards is defined %}
+   {% for card in getPlayerCards %}
         <li class="cards"> {{ card["graphic"] | raw }} </li>
     {% endfor %}
 {% endif %}
 
+
+{% if youLost is defined %}
+   {{youLost}}
+{% endif %}
 
 <form method="post" action="">
 <p>
@@ -23,9 +27,9 @@
     onClick="this.form.action='{{ path('start') }}';">  
 
     <input type="submit" name="stop" value="Stanna"
-    onClick="this.form.action='{{ path('start') }}';">
+    onClick="this.form.action='{{ path('stop') }}';">
 
-    <input type="submit" name="restart" value="Återställ"
+    <input type="submit" name="restart" value="Starta om"
     onClick="this.form.action='{{ path('restart') }}';">
 </p>
 </form>
