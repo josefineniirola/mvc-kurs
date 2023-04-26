@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Spel{% endblock %}
+
+{% block body %}
+
+{% if draw is defined %}
+    <li class="cards"> You drew: {{ draw["graphic"] | raw }} </li>
+    <br>
+{% endif %}
+
+
+{% if cardHand is defined %}
+   {% for card in cardHand %}
+        <li class="cards"> {{ card["graphic"] | raw }} </li>
+    {% endfor %}
+{% endif %}
+
+
+<form method="post" action="">
+<p>
+    <input type="submit" name="drawCard" value="Dra kort"
+    onClick="this.form.action='{{ path('start') }}';">  
+
+    <input type="submit" name="stop" value="Stanna"
+    onClick="this.form.action='{{ path('start') }}';">
+
+    <input type="submit" name="restart" value="Återställ"
+    onClick="this.form.action='{{ path('restart') }}';">
+</p>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Spel{% endblock %}
+
+{% block body %}
+
+<h1>Spel 21</h1>
+
+<p><a href="{{ path('doc') }}">Dokumentation</a> </p>
+{# <img style="width: 30%"src="./img/21.jpg"> #}
+
+<h2 style="color: black"> Regler </h2>
+
+<p>Spelets idé är att med två eller flera kort försöka uppnå det sammanlagda värdet 21, eller komma så nära som möjligt utan att överskrida 21. 
+Ess är värt 1 eller 14. </p>
+<p>- Om spelaren får över 21 vinner banken. </p>
+
+<form method="post" action="">
+<p>
+    <input type="submit" name="start" value="Starta spelet"
+        onClick="this.form.action='{{ path('start') }}';">
+</p>
+</form>
+
+
+{% endblock %}

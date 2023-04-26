@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentation{% endblock %}
+
+{% block body %}
+<a href="{{ path('game') }}">Gå tillbaka</a>
+<h1>Dokumentation</h1>
+
+<details>
+     <summary> Flödesschema </summary>
+    <img src="./img/game.drawio.png">
+</details>
+<details>
+    <summary> Pseudokod </summary>
+    <b>Kod</b>
+    <ul>
+    <li>- Ladda in sida</li>
+    <li>- Tryck på start knapp</li>
+    <li>- Ett kort visas på skärmen </li>
+    <li>- Välj om du vill fortsätta dra kort eller stanna</li>
+    <li>- Om du väljer att forstätta dra kort så får du ett nytt kort och så fortsätter det så</li>
+    <li>- Om du får över 21 så stannar spelet och det är bankens tur</li>
+    <li>- Alla bankens kort placeras ut tills den fått under eller över 21</li>
+    <li>- En funktion som kollar vem som kom närmast 21 och den vinner </li>
+    <li>- Du får välja att spela igen </li>
+    </ul>
+</details>
+
+<details>
+    <summary> Klasser </summary>
+    <p><b>Player()</b> En klass för en spelare som har drar kort i sin korthand, eventuellt en klass för banken också </p>
+    <p><b>Bank()</b> En klass för en bank som är likadan som player</p>
+    <p><b>21Game()</b> En klass för spelet och dess regler</p>
+</details>
+
+{% endblock %}
