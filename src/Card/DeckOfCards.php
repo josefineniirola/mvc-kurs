@@ -53,7 +53,7 @@ class DeckOfCards
         }
     }
 
-
+    // Function that returns deck without the cards that have been drawn.
     public function wannabeDeck(array $deck): void
     {
         foreach ($deck as $cards) {

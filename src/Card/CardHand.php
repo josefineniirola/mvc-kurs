@@ -2,8 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\Card;
-
 class CardHand
 {
     private $cards = [];
@@ -21,5 +19,33 @@ class CardHand
     public function getCards(): array
     {
         return $this->cards;
+    }
+
+    public function countCards() {
+        $countCards = [];
+        $cards = $this->cards;
+        foreach ($cards as $card) {
+            $countCards[] = $card["num"];
+        }
+        $sumOfCards = array_sum($countCards);
+        return $sumOfCards;
+    }
+
+    public function checkIfTwentyOne(): bool {
+        $win = True;
+
+        if ($this->countCards() > 21) {
+            $win = False;
+        }
+
+        if ($this->countCards() == 21) {
+            $win = True;
+        }
+
+        // if ($this->countCards() < 21) {
+        //     $win = False;
+        // }
+
+        return $win;
     }
 }
