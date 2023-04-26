@@ -13,12 +13,12 @@ class CardHand
         $this->cards = $cards;
     }
 
-    public function addCard(Card $card)
+    public function addCard(array $card)
     {
         $this->cards[] = $card;
     }
 
-    public function getCards()
+    public function getCards(): array
     {
         return $this->cards;
     }
