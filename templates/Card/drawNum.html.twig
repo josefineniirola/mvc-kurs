@@ -7,6 +7,10 @@
 
 {{numOfCards}}
 {% for card in deck %}
-    <li class="cards"> {{ card["graphic"] | raw }} </li>
+    {% if card["color"] == 'hearts' or card["color"] == 'diamonds' %}
+        <li style="color: red" class="cards"> {{card["graphic"] |raw }} </li>
+    {% else %}
+        <li class="cards"> {{ card["graphic"] | raw}} </li>
+    {% endif %}
 {% endfor %}
 {% endblock %}

@@ -5,8 +5,12 @@
 {% block body %}
 {% include 'Card/navbar.html.twig' %}
 
-    {% for card in cards %}
+{% for card in cards %}
+    {% if card["color"] == 'hearts' or card["color"] == 'diamonds' %}
+        <li style="color: red" class="cards"> {{card["graphic"] |raw }} </li>
+    {% else %}
         <li class="cards"> {{ card["graphic"] | raw}} </li>
-    {% endfor %}
+    {% endif %}
+{% endfor %}
 
 {% endblock %}

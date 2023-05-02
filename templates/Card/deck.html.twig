@@ -7,27 +7,19 @@
 
 <h1>Roll many dice</h1>
 
-{% for card in cards %}
+{# {% for card in cards %}
+    {% if card["color"] == 'hearts' %}
+        <li style="color: red" class="cards"> {{card["graphic"] |raw }} </li>
+    {% endif %}
     <li class="cards"> {{ card["graphic"] | raw}} </li>
+{% endfor %} #}
+
+{% for card in cards %}
+    {% if card["color"] == 'hearts' or card["color"] == 'diamonds' %}
+        <li style="color: red" class="cards"> {{card["graphic"] |raw }} </li>
+    {% else %}
+        <li class="cards"> {{ card["graphic"] | raw}} </li>
+    {% endif %}
 {% endfor %}
 
-{# <ul>
-{% for roll in cardRoll %}
-    <li class="cards">{{ roll |raw }}</li>
-{% endfor %}
-</ul> #}
-{# <ul>
-{% for item in deck %}
-    {% for value in item %}
-        <li class="cards">{{ value.value | raw }}</li>
-    {% endfor %}
-{% endfor %}
-</ul> #}
-
-{# <p>Try to roll 
-    <a href="{{ path('test_roll_num_dices', {num: 5}) }}">5</a>
-    or 
-    <a href="{{ path('test_roll_num_dices', {num: 10}) }}">10</a>
-    dices.
-</p> #}
 {% endblock %}
